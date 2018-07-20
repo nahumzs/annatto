@@ -1,6 +1,6 @@
 {
   "name": "@annatto/helpers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "publishConfig": {
@@ -15,5 +15,6 @@
     "styled-components": "^3.2.6"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "0ae18477f91ca8f84dca829e1928a745634bf110"
 }
