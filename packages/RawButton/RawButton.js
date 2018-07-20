@@ -137,7 +137,7 @@ class RawButton extends PureComponent {
           data-qa-anchor="aclui-raw-button__content"
           className="aclui-raw-button__content"
         >
-          {children}
+          🦄{children}
         </span>
       </span>
     );
