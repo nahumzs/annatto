@@ -10,12 +10,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "styled-components": "^3.2.6"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@annatto/Helpers": "^1.2.0",
     "classnames": "^2.2.6"
   },
   "gitHead": "0ae18477f91ca8f84dca829e1928a745634bf110"
