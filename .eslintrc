@@ -1,0 +1,51 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb", "plugin:jsx-a11y/recommended", "prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "import/no-named-as-default": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/newline-after-import": "off",
+    "import/no-unresolved": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": "off",
+    "react/require-extension": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/img-has-alt": "on",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-noninteractive-tabindex": "off",
+    "jsx-a11y/no-autofocus": "on",
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "quotes": [2, "double"],
+    "no-plusplus": "off",
+    "no-bitwise": "off",
+    "spaced-comment": "off",
+    "no-return-assign": "off",
+    "class-methods-use-this": "off"
+  },
+  "globals": {
+    "checkA11yIssues": true
+  }
+}
