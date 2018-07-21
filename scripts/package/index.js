@@ -11,7 +11,7 @@ program.version("0.0.1").option("-c, --create <PackageName>", "An integer argume
 program.on("--help", () => {
   log("  Examples:");
   log("");
-  log("    $ make-package.js --n YourComponentName");
+  log("    $ yarn package -c YourComponentName");
   log("");
 });
 
