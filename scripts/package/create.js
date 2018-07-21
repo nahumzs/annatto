@@ -8,6 +8,7 @@ const space = () => console.log("");
 const tplComponent = require("./templates/Component.js.template.js");
 const tplPackageJSON = require("./templates/package.json.template.js");
 const tplReadMe = require("./templates/readme.md.template.js");
+const tplIndex = require("./templates/index.js.template.js");
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.toLowerCase().slice(1);
 const pascalCase = str => {
@@ -32,22 +33,28 @@ const { log } = console;
 ├── <Component>.stories.js
 └── <Component>.screnner.js
 */
+
+// @annato is the scope package this should change to @acl-ui once we have the npm account
+const scope = "@annatto";
+const url = "https://design.annato.com/";
+
 const files = packageName => [
-  () => "package.json",
-  () => "index.js",
-  () => "readme.md",
-  () => `${packageName}.js`,
-  () => `${packageName}.a11y.js`,
-  () => `${packageName}.cypress.js`,
-  () => `${packageName}.stories.js`,
-  () => `${packageName}.screener.js`,
+  { path: () => `_${packageName.toLowerCase()}.a11y.js`, content: tplComponent },
+  { path: () => `_${packageName.toLowerCase()}.cypress.js`, content: tplComponent },
+  { path: () => `_${packageName.toLowerCase()}.screener.js`, content: tplComponent },
+  { path: () => `_${packageName.toLowerCase()}.stories.js`, content: tplComponent },
+  { path: () => "index.js", content: tplIndex },
+  { path: () => "package.json", content: tplPackageJSON(scope) },
+  { path: () => "readme.md", content: tplReadMe(scope)(url) },
+  { path: () => `${packageName}.js`, content: tplComponent },
+  { path: () => `${packageName}.styled.js`, content: tplComponent },
 ];
 
 const create = async name => {
   const packageName = pascalCase(name);
   const packagePath = path.resolve(__dirname, "../../packages");
   const packageNamePath = path.resolve(__dirname, `../../packages/${packageName}`);
-  log(chalk.magenta(`🧙‍✨ Magic starting with your new package: ${packageName}`));
+  log(chalk.magenta(`🧙‍✨ Magic is happening with your new package: ${packageName}`));
 
   if (fs.existsSync(packageNamePath)) {
     space();
@@ -75,7 +82,10 @@ const create = async name => {
 
   // creates files
   shell.cd(packageNamePath);
-  files(packageName).forEach(filePath => shell.touch(filePath()));
+  files(packageName).forEach(file => {
+    shell.touch(file.path());
+    fs.writeFileSync(file.path(), file.content(name));
+  });
 
   shell.exec("tree -l 1");
 

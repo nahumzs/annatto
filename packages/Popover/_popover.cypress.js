@@ -1,6 +1,6 @@
-const tplComponent = name => `import React, { Component } from "react";
+import React, { Component } from "react";
 
-export default class ${name} extends Component {
+export default class Popover extends Component {
   render() {
     return (
       <React.Fragment>
@@ -13,6 +13,3 @@ export default class ${name} extends Component {
   }
 }
 
-`;
-
-module.exports = tplComponent;

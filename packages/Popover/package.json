@@ -1,5 +1,5 @@
-const tplPackageJSON = scope => name => `{
-  "name": "${scope}/${name}",
+{
+  "name": "@annatto/Popover",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -10,10 +10,7 @@ const tplPackageJSON = scope => name => `{
   "publishConfig": {
     "access": "public"
   },
-  "author": "${scope}",
+  "author": "@annatto",
   "license": "MIT"
 }
 
-`;
-
-module.exports = tplPackageJSON;
