@@ -6,9 +6,11 @@ const promptly = require("promptly");
 const space = () => console.log("");
 
 const tplComponent = require("./templates/Component.js.template.js");
+const tplComponentStyled = require("./templates/Component.styled.js.template.js");
+const tplIndex = require("./templates/index.js.template.js");
 const tplPackageJSON = require("./templates/package.json.template.js");
 const tplReadMe = require("./templates/readme.md.template.js");
-const tplIndex = require("./templates/index.js.template.js");
+const tplStories = require("./templates/_component.stories.js.template.js");
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.toLowerCase().slice(1);
 const pascalCase = str => {
@@ -27,11 +29,12 @@ const { log } = console;
 ├── index.js
 ├── readme.md
 ├── <Component>.js
-├── <Component>.a11y.js
-├── <Component>.performance.js
-├── <Component>.cypress.js
-├── <Component>.stories.js
-└── <Component>.screnner.js
+├── <Component>.styled.js
+├── _<Component>.a11y.js
+├── _<Component>.performance.js
+├── _<Component>.cypress.js
+├── _<Component>.stories.js
+└── _<Component>.screnner.js
 */
 
 // @annato is the scope package this should change to @acl-ui once we have the npm account
@@ -42,19 +45,19 @@ const files = packageName => [
   { path: () => `_${packageName.toLowerCase()}.a11y.js`, content: tplComponent },
   { path: () => `_${packageName.toLowerCase()}.cypress.js`, content: tplComponent },
   { path: () => `_${packageName.toLowerCase()}.screener.js`, content: tplComponent },
-  { path: () => `_${packageName.toLowerCase()}.stories.js`, content: tplComponent },
+  { path: () => `_${packageName.toLowerCase()}.stories.js`, content: tplStories },
   { path: () => "index.js", content: tplIndex },
   { path: () => "package.json", content: tplPackageJSON(scope) },
   { path: () => "readme.md", content: tplReadMe(scope)(url) },
   { path: () => `${packageName}.js`, content: tplComponent },
-  { path: () => `${packageName}.styled.js`, content: tplComponent },
+  { path: () => `${packageName}.styled.js`, content: tplComponentStyled },
 ];
 
 const create = async name => {
   const packageName = pascalCase(name);
   const packagePath = path.resolve(__dirname, "../../packages");
   const packageNamePath = path.resolve(__dirname, `../../packages/${packageName}`);
-  log(chalk.magenta(`🧙‍✨ Magic is happening with your new package: ${packageName}`));
+  log(`🧙‍✨ The mighty wizard is starting to work in your new package '${packageName}'`);
 
   if (fs.existsSync(packageNamePath)) {
     space();
@@ -89,7 +92,7 @@ const create = async name => {
 
   shell.exec("tree -l 1");
 
-  log(chalk.green(`🧙‍🌈🦄 Magic happened enjoy your new ${packageName} package`));
+  log(chalk.green(`🧙‍🌈🦄 The mighty wizard finished crafting your new package '${packageName}' enjoy it!`));
   return true;
 };
 
