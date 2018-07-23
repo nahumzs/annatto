@@ -1,8 +1,8 @@
-# installation
+# Install
 
-`> npm install @annatto/popover`
-or
-`> yarn add @annatto/popover`
+> npm install @annatto/popover
+> or
+> yarn add @annatto/popover
 
 # How to use it
 
@@ -23,18 +23,12 @@ then use <Popover {...props} />
 </Popover>
 ```
 
+aa
+
 ```js
 <Popover>
   <Popover.Link />
   <Popover.Content />
-</Popover>
-```
-
-```js
-// Advance case with providing boundingClientRect
-<Popover>
-  <Popover.Element rect={() => (some.getboundingClientRect()) />
-  <Popover.Content isVisible={}></Popover.Content>
 </Popover>
 ```
 
@@ -46,24 +40,36 @@ then use <Popover {...props} />
 </Popover>
 ```
 
-### Props
-
-**Alignment**
-
 ```js
-<Popover align="bottom">
-  <Popover.Button>
-    <span role="image" aria-label="fox">
-      🦊
-    </span>
-    <span>Show popover</span>
-  </Popover.Button>
-  <Popover.Content>Popover content</Popover.Content>
+// Advance case with providing boundingClientRect
+<Popover>
+<Popover.Element rect={() => (some.getboundingClientRect())} />
+<Popover.Content isVisible={} />
 </Popover>
 ```
 
 ```js
-Popover: align = [
+// Utility Pre-made Components
+<Popover>
+  <Popover.Button />
+  <Popover.Delete
+    message={}
+    onConfirm={}
+    onCancel={}
+  />
+</Popover>
+```
+
+# Props
+
+_<Popover />_
+
+**align** `default: bottom`
+
+`<Popover align="left" />`
+
+```js
+oneOf([
   // basic alignments
   "topLeft",
   "top",
@@ -103,7 +109,7 @@ Popover: align = [
   "left:bottom",
   "leftBottom:top",
   "leftBottom:bottom",
-];
+]);
 ```
 
 # Read more
