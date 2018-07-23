@@ -2,11 +2,14 @@ import styled from "styled-components";
 import "typeface-lato";
 
 export const ContentStyled = styled.div`
-  font-family: Lato, sans-serif;
   box-sizing: border-box;
+  display: inline-block;
+  font-family: Lato, sans-serif;
+  left: 0;
   position: absolute;
-  transition: all 500ms ease;
-  ${props => (props.isVisible ? "opacity: 1; visibility: visible;" : "opacity: 0;  visibility: hidden;")};
+  top: 0;
+  transition: all 300ms ease;
+  ${props => (props.isVisible ? "opacity: 1; visibility: visible;" : "opacity: 0; top: -5000px")};
 `;
 
-ContentStyled.displayName = "PopoverStyled";
+ContentStyled.displayName = "ContentStyled";

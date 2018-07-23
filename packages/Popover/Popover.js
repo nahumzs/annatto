@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { number, node, bool, oneOf } from "prop-types";
 import alignProps from "./_proptypes_align";
 import { PopoverStyled } from "./Popover.styled";
-import { getAnchors } from "./helpers/getPoints";
+import { getAnchor } from "./helpers/getPosition";
 import Content from "./Content/Content";
 import Tooltip from "./Tooltip/Tooltip";
 import Button from "./Button/Button";
@@ -38,13 +38,13 @@ export default class Popover extends Component {
     // ex. font is not loaded, some calculation have to happend to the
     // trigger element before etc.
     if (waitToRender) {
-      setTimeout(() => this.setState({ anchor: getAnchors(rect, align) }), waitToRender);
+      setTimeout(() => this.setState({ anchor: getAnchor(rect, align) }), waitToRender);
       return;
     }
 
     // about setState in ComponentDidMount and Tooltip
     // https://reactjs.org/docs/react-component.html#componentdidmount
-    this.setState({ anchor: getAnchors(rect, align) });
+    this.setState({ anchor: getAnchor(rect, align) });
   }
 
   handleClick = () => {

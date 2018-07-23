@@ -26,7 +26,7 @@ export default class Basic extends Component {
       <Popover>
         <Popover.Button>This is the popover</Popover.Button>
         <Popover.Content>
-          <Popover.Tooltip>this is popover content</Popover.Tooltip>
+          <Popover.Tooltip>this is popover content with long text</Popover.Tooltip>
         </Popover.Content>
       </Popover>
     );

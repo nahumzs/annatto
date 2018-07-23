@@ -19,13 +19,12 @@ then use <Popover {...props} />
 // Basic case with button trigger
 <Popover>
   <Popover.Button />
-  <Popover.Content />
+  <Popover.Content>Can be anythings</Popover.Content>
 </Popover>
 ```
 
-aa
-
 ```js
+// Basic case with Link trigger
 <Popover>
   <Popover.Link />
   <Popover.Content />
@@ -33,12 +32,32 @@ aa
 ```
 
 ```js
+// Button and tooltip style
+<Popover>
+  <Popover.Button>Is a tooltip</Popover.Button>
+  <Popover.Content>
+    <Popover.Tooltip>Content with style of a Tooltip</Popover.Tooltip>
+  </Popover.Content>
+</Popover>
+```
+
+````js
+// Button and HoverCard style
+<Popover>
+  <Popover.Button>Is a tooltip</Popover.Button>
+  <Popover.Content>
+    <Popover.HoverCard>Content with style of a HoverCard</Popover.HoverCard>
+  </Popover.Content>
+</Popover>
+
+
+```js
 // Advance case with providing element where to mount the popover
 <Popover>
   <Popover.Element query={() => {document.querySelector('.some-element')}} />
   <Popover.Content isVisible={}></Popover.Content>
 </Popover>
-```
+````
 
 ```js
 // Advance case with providing boundingClientRect
