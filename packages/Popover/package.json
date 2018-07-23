@@ -1,6 +1,6 @@
 {
-  "name": "@annatto/Popover",
-  "version": "0.1.0",
+  "name": "@annatto/popover",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "peerDependencies": {
@@ -12,5 +12,6 @@
     "access": "public"
   },
   "author": "@annatto",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "4aaee03aeeaa6af3c9b29b548e0490e1589153e8"
 }
