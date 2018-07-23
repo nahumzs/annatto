@@ -40,7 +40,7 @@ const { log } = console;
 // @annato is the scope package this should change to @acl-ui once we have the npm account
 const scope = "@annatto";
 const url = "https://design.annato.com/";
-const repository = "https://github.com/nahumzs/annatto";
+const repository = "https://github.com/nahumzs/annatto.git";
 
 const files = packageName => [
   { path: () => `_${packageName.toLowerCase()}.a11y.js`, content: tplComponent },
