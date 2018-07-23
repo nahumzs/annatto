@@ -8,9 +8,9 @@ const tplPackageJSON = (scope, repository) => name => `{
     "styled-components": "^3.2.6",
     "typeface-lato": "^0.0.54"
   },
-  {
-    "type" : "git",
-    "url" : "${repository}"
+  "repository": {
+    "type": "git",
+    "url": "${repository}"
   },
   "publishConfig": {
     "access": "public"
