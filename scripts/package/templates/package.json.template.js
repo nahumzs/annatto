@@ -1,5 +1,5 @@
 const tplPackageJSON = scope => name => `{
-  "name": "${scope}/${name}",
+  "name": "${scope}/${name.toLowerCase()}",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",

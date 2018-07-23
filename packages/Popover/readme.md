@@ -49,7 +49,7 @@ then use <Popover {...props} />
     <Popover.HoverCard>Content with style of a HoverCard</Popover.HoverCard>
   </Popover.Content>
 </Popover>
-
+```
 
 ```js
 // Advance case with providing element where to mount the popover
