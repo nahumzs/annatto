@@ -40,7 +40,7 @@ export default class Content extends Component {
           return ReactDOM.createPortal(
             <ContentStyled
               style={{ left: this.x, top: this.y }}
-              aria-hidden={isVisible}
+              aria-hidden={!isVisible}
               tabIndex={isVisible ? 0 : -1}
               innerRef={ref => {
                 if (ref) {
