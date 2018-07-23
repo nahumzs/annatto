@@ -23,12 +23,27 @@ PopoverContentStyled.displayName = "PopoverContentStyled";
 export default class Basic extends Component {
   render() {
     return (
-      <Popover>
-        <Popover.Button>This is the popover</Popover.Button>
-        <Popover.Content>
-          <Popover.Tooltip>this is popover content with long text</Popover.Tooltip>
-        </Popover.Content>
-      </Popover>
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          "align-items": "center",
+          "justify-content": "center",
+        }}
+      >
+        <Popover align="right">
+          <Popover.Button>This is the popover</Popover.Button>
+          <Popover.Content>
+            <Popover.Tooltip>
+              this is popover content with long text and a{" "}
+              <span role="img" aria-label="unicorn">
+                🦄
+              </span>
+            </Popover.Tooltip>
+          </Popover.Content>
+        </Popover>
+      </div>
     );
   }
 }

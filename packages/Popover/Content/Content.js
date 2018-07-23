@@ -18,10 +18,13 @@ export default class Content extends Component {
     children: node.isRequired,
   };
 
-  getCoordinates = (rect, anchor) => getContentCoordinates({ rect, anchor });
-
   setCoordinates = () => {
-    const { x, y } = this.getCoordinates(this.$content.getBoundingClientRect(), this.anchor);
+    const { x, y } = getContentCoordinates({
+      rect: this.$content.getBoundingClientRect(),
+      anchor: this.anchor,
+      rectTrigger: this.rectTrigger,
+      align: this.align,
+    });
     this.x = x;
     this.y = y;
   };
@@ -29,9 +32,11 @@ export default class Content extends Component {
   render() {
     return (
       <ContextPopover.Consumer>
-        {({ anchor, isVisible }) => {
+        {({ anchor, isVisible, rectTrigger, align }) => {
           if (!anchor) return null;
 
+          this.rectTrigger = rectTrigger;
+          this.align = align;
           this.anchor = anchor;
           if (this.$content) {
             this.setCoordinates();
@@ -41,7 +46,7 @@ export default class Content extends Component {
             <ContentStyled
               style={{ left: this.x, top: this.y }}
               aria-hidden={!isVisible}
-              tabIndex={isVisible ? 0 : -1}
+              tabIndex={isVisible ? "" : -1}
               innerRef={ref => {
                 if (ref) {
                   this.$content = ref;

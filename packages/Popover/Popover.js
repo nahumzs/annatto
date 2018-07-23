@@ -10,7 +10,7 @@ import Button from "./Button/Button";
 export const ContextPopover = React.createContext();
 
 export default class Popover extends Component {
-  $popover = React.createRef();
+  $trigger = React.createRef();
 
   static propTypes = {
     align: oneOf(alignProps),
@@ -31,20 +31,22 @@ export default class Popover extends Component {
   };
 
   componentDidMount() {
-    const rect = this.$popover.current.getBoundingClientRect();
     const { align, waitToRender } = this.props;
 
     // there are edge case when wait before render make sense
     // ex. font is not loaded, some calculation have to happend to the
     // trigger element before etc.
     if (waitToRender) {
-      setTimeout(() => this.setState({ anchor: getAnchor(rect, align) }), waitToRender);
+      setTimeout(
+        () => this.setState({ anchor: getAnchor(this.$trigger.current.getBoundingClientRect(), align) }),
+        waitToRender
+      );
       return;
     }
 
     // about setState in ComponentDidMount and Tooltip
     // https://reactjs.org/docs/react-component.html#componentdidmount
-    this.setState({ anchor: getAnchor(rect, align) });
+    this.setState({ anchor: getAnchor(this.$trigger.current.getBoundingClientRect(), align) });
   }
 
   handleClick = () => {
@@ -56,13 +58,22 @@ export default class Popover extends Component {
   isVisible = () => (this.props.isVisible !== null ? this.props.isVisible : this.state.isVisible);
 
   render() {
-    const { children } = this.props;
+    const { align, children } = this.props;
     const { anchor } = this.state;
     const isVisible = this.isVisible();
+    const rectTrigger = this.$trigger.current ? this.$trigger.current.getBoundingClientRect() : null;
 
     return (
-      <ContextPopover.Provider value={{ anchor, isVisible, handleClick: this.handleClick }}>
-        <PopoverStyled innerRef={this.$popover} data-qa-anchor={this.typename}>
+      <ContextPopover.Provider
+        value={{
+          align,
+          anchor,
+          isVisible,
+          handleClick: this.handleClick,
+          rectTrigger,
+        }}
+      >
+        <PopoverStyled innerRef={this.$trigger} data-qa-anchor={this.typename}>
           {children}
         </PopoverStyled>
       </ContextPopover.Provider>

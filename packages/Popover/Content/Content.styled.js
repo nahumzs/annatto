@@ -3,7 +3,6 @@ import "typeface-lato";
 
 export const ContentStyled = styled.div`
   box-sizing: border-box;
-  display: inline-block;
   font-family: Lato, sans-serif;
   position: absolute;
   transition: all 300ms ease;
