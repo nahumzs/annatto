@@ -11,6 +11,7 @@ export default class Card extends Component {
   };
 
   static defaultProps = {
+    // this need the use of tokens
     fontColor: "#111",
     background: "#FFF",
     borderColor: "#CECECE",

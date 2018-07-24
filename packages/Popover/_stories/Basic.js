@@ -21,30 +21,48 @@ const PopoverContentStyled = styled.div`
 PopoverContentStyled.displayName = "PopoverContentStyled";
 
 export default class Basic extends Component {
+  state = {
+    align: "bottom",
+  };
+
+  handleChange = event => {
+    this.setState({
+      align: event.target.value,
+    });
+  };
+
   render() {
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Popover>
-          <Popover.Button>This is the popover</Popover.Button>
-          <Popover.Content>
-            <Popover.Tip />
-            <Popover.Card>
-              this is popover content with long text and a
-              <span role="img" aria-label="unicorn">
-                🦄
-              </span>
-            </Popover.Card>
-          </Popover.Content>
-        </Popover>
-      </div>
+      <React.Fragment>
+        <select onChange={this.handleChange} value={this.state.align}>
+          <option>top</option>
+          <option>left</option>
+          <option>right</option>
+          <option>bottom</option>
+        </select>
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Popover align={this.state.align}>
+            <Popover.Button>This is the popover</Popover.Button>
+            <Popover.Content>
+              <Popover.Tip />
+              <Popover.Card>
+                this is popover content with long text and a
+                <span role="img" aria-label="unicorn">
+                  🦄
+                </span>
+              </Popover.Card>
+            </Popover.Content>
+          </Popover>
+        </div>
+      </React.Fragment>
     );
   }
 }

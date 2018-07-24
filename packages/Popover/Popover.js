@@ -6,6 +6,7 @@ import Content from "./Content/Content";
 import Card from "./Card/Card";
 import Button from "./Button/Button";
 import Tip from "./Tip/Tip";
+import resizeThrottler from "./helpers/resizeThrottler";
 
 import { getCoordinates as getCoordinatesHelper, getAnchor } from "./helpers/getPosition";
 
@@ -14,7 +15,10 @@ export const ContextPopover = React.createContext();
 export default class Popover extends Component {
   $trigger = React.createRef();
 
-  $tip = null;
+  $tip = null; // this ref comes from a callback of the <Tip /> component
+
+  hasEventListenerLoaded = false;
+  isComponentStarting = true;
 
   static propTypes = {
     align: oneOf(alignProps),
@@ -55,6 +59,17 @@ export default class Popover extends Component {
     // about setState for Popovers and Tooltips in ComponentDidMount
     // https://reactjs.org/docs/react-component.html#componentdidmount
     if (this.isVisible()) {
+      this.setPosition();
+      this.addEventListener();
+    }
+  }
+
+  componentDidUpdate(previousProps) {
+    if (this.isVisible() && !this.hasEventListenerLoaded) {
+      this.addEventListener();
+    }
+
+    if (previousProps.align !== this.props.align) {
       this.setPosition();
     }
   }
@@ -107,6 +122,12 @@ export default class Popover extends Component {
     };
   };
 
+  handleResize = () => {
+    if (this.isVisible()) {
+      this.setPosition();
+    }
+  };
+
   handleClick = () => {
     if (this.isVisible) {
       const { content, tip } = this.getCoordinates();
@@ -132,6 +153,11 @@ export default class Popover extends Component {
   refContent = ref => {
     this.$content = ref;
   };
+
+  addEventListener() {
+    window.addEventListener("resize", resizeThrottler(this.handleResize), false);
+    this.hasEventListenerLoaded = true;
+  }
 
   render() {
     const { children } = this.props;

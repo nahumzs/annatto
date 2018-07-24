@@ -10,13 +10,11 @@ export default class Button extends Component {
   render() {
     return (
       <ContextPopover.Consumer>
-        {({ handleClick }) => {
-          return (
-            <button type="button" onClick={handleClick}>
-              {this.props.children}
-            </button>
-          );
-        }}
+        {({ handleClick }) => (
+          <button type="button" onClick={handleClick}>
+            {this.props.children}
+          </button>
+        )}
       </ContextPopover.Consumer>
     );
   }
