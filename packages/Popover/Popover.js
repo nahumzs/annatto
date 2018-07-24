@@ -5,6 +5,8 @@ import { PopoverStyled } from "./Popover.styled";
 import Content from "./Content/Content";
 import Card from "./Card/Card";
 import Button from "./Button/Button";
+import Tip from "./Tip/Tip";
+
 import { getCoordinates as getCoordinatesHelper, getAnchor } from "./helpers/getPosition";
 
 export const ContextPopover = React.createContext();
@@ -76,13 +78,21 @@ export default class Popover extends Component {
       align,
     });
 
-    const tip = getCoordinatesHelper({
-      rect: this.$tip.getBoundingClientRect(),
-      anchor: getAnchor(this.$trigger.current.getBoundingClientRect(), align),
-      rectTrigger,
-      align,
-      offset: -2,
-    });
+    let tip = {
+      x: null,
+      y: null,
+      rotate: null,
+    };
+
+    if (this.$tip) {
+      tip = getCoordinatesHelper({
+        rect: this.$tip.getBoundingClientRect(),
+        anchor: getAnchor(this.$trigger.current.getBoundingClientRect(), align),
+        rectTrigger,
+        align,
+        offset: -2,
+      });
+    }
 
     return {
       tip: {
@@ -149,3 +159,4 @@ export default class Popover extends Component {
 Popover.Button = Button;
 Popover.Content = Content;
 Popover.Card = Card;
+Popover.Tip = Tip;

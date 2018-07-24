@@ -35,8 +35,8 @@ export default class Basic extends Component {
         <Popover>
           <Popover.Button>This is the popover</Popover.Button>
           <Popover.Content>
-            <Popover.Tip />
-            <Popover.Card>
+            <Popover.Tip background="#111" borderColor="#111" />
+            <Popover.Card background="#111" borderColor="#111" fontColor="#FFF">
               this is popover content with long text and a
               <span role="img" aria-label="unicorn">
                 🦄
