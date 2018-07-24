@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { node } from "prop-types";
-import { TooltipStyled } from "./Tooltip.styled";
+import { CardStyled } from "./Card.styled";
 
 export default class Tooltip extends Component {
   static propTypes = {
@@ -8,6 +8,6 @@ export default class Tooltip extends Component {
   };
 
   render() {
-    return <TooltipStyled>{this.props.children}</TooltipStyled>;
+    return <CardStyled {...this.props}>{this.props.children}</CardStyled>;
   }
 }

@@ -28,19 +28,19 @@ export default class Basic extends Component {
           width: "100%",
           height: "100vh",
           display: "flex",
-          "align-items": "center",
-          "justify-content": "center",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <Popover align="right">
+        <Popover>
           <Popover.Button>This is the popover</Popover.Button>
           <Popover.Content>
-            <Popover.Tooltip>
-              this is popover content with long text and a{" "}
+            <Popover.Card>
+              this is popover content with long text and a
               <span role="img" aria-label="unicorn">
                 🦄
               </span>
-            </Popover.Tooltip>
+            </Popover.Card>
           </Popover.Content>
         </Popover>
       </div>
